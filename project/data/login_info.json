@@ -1,3 +1,4 @@
 {
-    "Joe": "Password"
+    "username": "Joe",
+    "password": "password123"
 }
