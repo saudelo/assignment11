@@ -7,3 +7,17 @@
 # write_data(filepath, data):
 #   - open the file at the given path in write mode
 #   - serialise 'data' as JSON and write it to the file
+
+import json
+import os
+
+def read_data(filepath):
+    if not os.path.exists(filepath):
+        return []
+    
+    with open(filepath, "r", encoding="urf-8") as file:
+        return json.load(file)
+
+def write_data(filepath, data):
+    with open(filepath, "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=2)
