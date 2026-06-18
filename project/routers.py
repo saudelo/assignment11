@@ -4,15 +4,18 @@
 #Update (REQUIRED)	At least one PUT or PATCH endpoint that modifies an existing record
 #Delete (REQUIRED)	At least one DELETE endpoint that removes a record by ID
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from auth import get_current_user
 
 
 router = APIRouter()
 
 #testing
-@router.get("/")
-def read_root():
-    return {"message": "Welcome to the Travel log API"}
+@router.get("/user/", tags=["Auth"])
+def get_user(username: str = Depends(get_current_user)):
+    return {
+        "username" : username,
+        "message": f"Hello {username}, you are authenticated."}
 
 @router.get("/status")
 async def get_status():
