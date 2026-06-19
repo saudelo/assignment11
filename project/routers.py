@@ -28,7 +28,7 @@ def get_user(username: str = Depends(get_current_user)):
 async def get_status():
     return {"status": "running", "version": "1.0.0"}
 
-@router.post("/travel-logs")
+@router.post("/travel-logs", tags=["Auth"])
 def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_current_user)):
     logs = read_travel_logs()
 
@@ -62,3 +62,7 @@ def create_user_info(user: LoginInfo):
     write_data(LOGIN_FILE, users)
 
     return new_user
+
+@router.patch("/travel-log/{id}")
+def patch_travel_log():
+    return

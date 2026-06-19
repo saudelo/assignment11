@@ -6,6 +6,30 @@
     "destination": "France",
     "start_date": "2026-03-20",
     "end_date": "2026-03-27",
-    "highlights": ["Went to Eiffel Tower"]
+    "highlights": [
+      "Went to Eiffel Tower"
+    ]
+  },
+  {
+    "id": 2,
+    "username": "Joe",
+    "name": "string",
+    "destination": "string",
+    "start_date": "2026-06-19",
+    "end_date": "2026-06-19",
+    "highlights": [
+      "string"
+    ]
+  },
+  {
+    "id": 3,
+    "username": "Joe",
+    "name": "string",
+    "destination": "string",
+    "start_date": "2026-06-19",
+    "end_date": "2026-06-19",
+    "highlights": [
+      "string"
+    ]
   }
 ]
