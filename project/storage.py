@@ -63,10 +63,6 @@ def get_username_travel_log(username: str):
             return user  #return the whole dictionary for that user
     return None
 
-def get_all_users():
-    travel_log_data = read_travel_logs()
-    return travel_log_data
-
 def get_id_travel_log(id: str):
     travel_log_data = read_travel_logs()
 
