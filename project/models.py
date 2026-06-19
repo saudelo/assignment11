@@ -14,7 +14,7 @@ class TravelLogBase(BaseModel):
     destination: str
     start_date: date
     end_date: date
-    highlights: str
+    highlights: list[str]
 
 # (POST) Usees the above model^ as the base to create new entry
 class TravelLogCreate(TravelLogBase):
@@ -26,7 +26,7 @@ class TravelLogUpdate(BaseModel):
     destination: Optional[str] = None
     start_date: Optional[date] = None
     end_date: Optional[date] = None
-    highlights: Optional[str] = None
+    highlights: Optional[list[str]] = None
 
 # (GET) Outgoing data
 class TravelLogResponse(TravelLogBase):

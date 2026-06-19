@@ -6,7 +6,8 @@
 
 from fastapi import APIRouter, Depends
 from auth import get_current_user
-from storage import read_data
+from storage import read_travel_logs, write_data, TRAVEL_LOG_FILE
+from models import TravelLogCreate, TravelLogResponse
 
 router = APIRouter()
 
@@ -18,3 +19,23 @@ def get_user(username: str = Depends(get_current_user)):
 @router.get("/status")
 async def get_status():
     return {"status": "running", "version": "1.0.0"}
+
+@router.post("/travel-logs")
+def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_current_user)):
+    logs = read_travel_logs()
+
+    next_id = 1 if not logs else max(log["id"] for log in logs) + 1
+
+    new_log = {
+        "id": next_id,
+        "username": travel_log.username,
+        "destination": travel_log.destination,
+        "start_date": str(travel_log.start_date),
+        "end_date": str(travel_log.end_date),
+        "highlights": travel_log.highlights
+    }
+
+    logs.append(new_log)
+    write_data(TRAVEL_LOG_FILE, logs)
+
+    return new_log
