@@ -3,7 +3,6 @@ from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from starlette import status
 from storage import read_login_info
-from models import LoginInfo
 
 
 
