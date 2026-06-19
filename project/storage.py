@@ -15,9 +15,13 @@ def read_data(filepath):
     if not os.path.exists(filepath):
         return []
     
-    with open(filepath, "r", encoding="urf-8") as file:
+    with open(filepath, "r", encoding="utf-8") as file:
         return json.load(file)
 
 def write_data(filepath, data):
     with open(filepath, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=2)
+
+filepath = "project/data/travel_log.json"
+data = read_data(filepath)
+print(data)
