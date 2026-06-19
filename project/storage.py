@@ -11,6 +11,9 @@
 import json
 import os
 
+TRAVEL_LOG_FILE = "project/data/travel_log.json"
+LOGIN_FILE = "project/data/login_info.json"
+
 def read_data(filepath):
     if not os.path.exists(filepath):
         return []
@@ -22,6 +25,35 @@ def write_data(filepath, data):
     with open(filepath, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=2)
 
-filepath = "project/data/travel_log.json"
-data = read_data(filepath)
-print(data)
+def read_travel_logs():
+    data = read_data(TRAVEL_LOG_FILE)
+    if data is None:
+        return []
+    if isinstance(data, list):
+        return  data
+    else:
+        return []
+
+def read_login_info():
+    data = read_data(LOGIN_FILE)
+    if data is None:
+        return []
+    
+    if isinstance(data, list):
+        return data
+    
+    return []
+
+def get_user_by_username(username: str):
+    login_data = read_login_info()
+
+    for user in login_data:
+        if user.get("username") == username:
+            return user
+
+    return None
+
+
+# filepath = "project/data/travel_log.json"
+# data = read_data(filepath)
+# print(data)
