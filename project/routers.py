@@ -7,7 +7,7 @@
 from fastapi import APIRouter, Depends
 from auth import get_current_user
 
-
+FILE_PATH = "project/data/travel_log.json"
 router = APIRouter()
 
 #testing

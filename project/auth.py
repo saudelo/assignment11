@@ -2,17 +2,18 @@ import secrets
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from starlette import status
+from storage import read_data,write_data
 
-
-USERS = {
-    "alice": "password123",
-    "bob":   "securepass"
-}
+USERS_PATH = "project/data/login_info.json"
 
 security = HTTPBasic()
+def get_user_data():
+    user = read_data(USERS_PATH)
+    return user
 
 def get_current_user(credentials: HTTPBasicCredentials = Depends(security)) -> str:
-    stored_password = USERS.get(credentials.username, "")
+    user_info = get_user_data()
+    stored_password = user_info.get(credentials.username, "")
     # If the username does not exist, .get() returns "" 
    
     # encode("utf-8") is required because compare_digest expects bytes.
