@@ -6,16 +6,14 @@
 
 from fastapi import APIRouter, Depends
 from auth import get_current_user
+from storage import read_data
 
-FILE_PATH = "project/data/travel_log.json"
 router = APIRouter()
 
 #testing
 @router.get("/user/", tags=["Auth"])
 def get_user(username: str = Depends(get_current_user)):
-    return {
-        "username" : username,
-        "message": f"Hello {username}, you are authenticated."}
+    return f"status: authenticated, username: {username}"
 
 @router.get("/status")
 async def get_status():

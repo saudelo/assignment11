@@ -2,30 +2,39 @@ import secrets
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from starlette import status
-from storage import read_data,write_data
+from storage import read_login_info
+from models import LoginInfo
 
-USERS_PATH = "project/data/login_info.json"
+
 
 security = HTTPBasic()
 
-
-
 def get_current_user(credentials: HTTPBasicCredentials = Depends(security)) -> str:
-    user_info =  read_data(USERS_PATH)
-    stored_password = user_info.get(credentials.username, "")
-    # If the username does not exist, .get() returns "" 
+    users_list =  read_login_info()
+    this_user = next((u for u in users_list if u["username"] == credentials.username), None)
    
-    # encode("utf-8") is required because compare_digest expects bytes.
-    password_correct = secrets.compare_digest(
+
+    if this_user:
+        stored_password = this_user.get("password", None)
+        password_correct = secrets.compare_digest(
         credentials.password.encode("utf-8"),
         stored_password.encode("utf-8")
-    )
-
-    if not password_correct:
-        raise HTTPException(
+        )
+        if password_correct:
+            return credentials.username
+        else:
+            raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid username or password",
+            detail="Invalid password",
             headers={"WWW-Authenticate": "Basic"}
         )
+         
+    else:
+        raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid username",
+        headers={"WWW-Authenticate": "Basic"}
+        )
+         
 
-    return credentials.username
+ 

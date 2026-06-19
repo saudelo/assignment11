@@ -11,8 +11,9 @@
 import json
 import os
 
-TRAVEL_LOG_FILE = "project/data/travel_log.json"
-LOGIN_FILE = "project/data/login_info.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TRAVEL_LOG_FILE = os.path.join(BASE_DIR, "data", "travel_log.json")
+LOGIN_FILE = os.path.join(BASE_DIR, "data", "login_info.json")
 
 def read_data(filepath):
     if not os.path.exists(filepath):
