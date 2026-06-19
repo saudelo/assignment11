@@ -46,7 +46,7 @@ def read_login_info():
     return []
 
 def get_user_by_username(username: str):
-    login_data = read_login_info()
+    login_data = read_travel_logs()
 
     for user in login_data:
         if user.get("username") == username:
@@ -54,7 +54,23 @@ def get_user_by_username(username: str):
 
     return None
 
+#authed
+def get_username_travel_log(username: str):
+    travel_log_data = read_travel_logs()
 
-# filepath = "project/data/travel_log.json"
-# data = read_data(filepath)
-# print(data)
+    for user in travel_log_data:
+        if user.get("username") == username:
+            return user  #return the whole dictionary for that user
+    return None
+
+def get_all_users():
+    travel_log_data = read_travel_logs()
+    return travel_log_data
+
+def get_id_travel_log(id: str):
+    travel_log_data = read_travel_logs()
+
+    for user in travel_log_data:
+        if user.get("id") == id:
+            return user  #return the whole dictionary for  that user
+    return None

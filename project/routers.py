@@ -6,15 +6,28 @@
 
 from fastapi import APIRouter, Depends
 from auth import get_current_user
-from storage import read_data
+from storage import read_data, get_username_travel_log
+from models import TravelLogBase
 
 router = APIRouter()
 
-#testing
+#for authenticating user
 @router.get("/user/", tags=["Auth"])
 def get_user(username: str = Depends(get_current_user)):
     return f"status: authenticated, username: {username}"
 
+#get all user logs
+@router.get("/travel_logs/", response_model = TravelLogBase )
+def get_all_logs():
+    return f"{      }"
+
+
+
+
+
+
+
+#test
 @router.get("/status")
 async def get_status():
     return {"status": "running", "version": "1.0.0"}
