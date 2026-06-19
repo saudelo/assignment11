@@ -7,12 +7,11 @@ from storage import read_data,write_data
 USERS_PATH = "project/data/login_info.json"
 
 security = HTTPBasic()
-def get_user_data():
-    user = read_data(USERS_PATH)
-    return user
+
+
 
 def get_current_user(credentials: HTTPBasicCredentials = Depends(security)) -> str:
-    user_info = get_user_data()
+    user_info =  read_data(USERS_PATH)
     stored_password = user_info.get(credentials.username, "")
     # If the username does not exist, .get() returns "" 
    
