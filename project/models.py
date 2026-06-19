@@ -11,6 +11,7 @@ from datetime import date
 # Base Model based on the JSON model of the data
 class TravelLogBase(BaseModel):
     username: str
+    name: str
     destination: str
     start_date: date
     end_date: date
@@ -23,6 +24,7 @@ class TravelLogCreate(TravelLogBase):
 # (PATCH) Partial updates and makes every attribute optional to fill
 class TravelLogUpdate(BaseModel):
     username: Optional[str] = None
+    name: Optional[str] = None
     destination: Optional[str] = None
     start_date: Optional[date] = None
     end_date: Optional[date] = None
