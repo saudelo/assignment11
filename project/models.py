@@ -31,3 +31,8 @@ class TravelLogUpdate(BaseModel):
 # (GET) Outgoing data
 class TravelLogResponse(TravelLogBase):
     id: int #added on id for the travel log
+
+# Login model
+class LoginInfo(BaseModel):
+    username: str
+    password: str
