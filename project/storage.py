@@ -10,6 +10,7 @@
 
 import json
 import os
+from fastapi import HTTPException
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TRAVEL_LOG_FILE = os.path.join(BASE_DIR, "data", "travel_log.json")
@@ -54,7 +55,6 @@ def get_user_by_username(username: str):
 
     return None
 
-#authed
 def get_username_travel_log(username: str):
     travel_log_data = read_travel_logs()
 
@@ -63,10 +63,24 @@ def get_username_travel_log(username: str):
             return user  #return the whole dictionary for that user
     return None
 
-def get_id_travel_log(id: str):
+def get_id_travel_log(id: int, username:str):
     travel_log_data = read_travel_logs()
 
-    for user in travel_log_data:
-        if user.get("id") == id:
-            return user  #return the whole dictionary for  that user
-    return None
+    for travel_log in travel_log_data:
+        if travel_log.get("id") == id:
+
+            if travel_log.get("username") == username:
+                return travel_log #return the specific log for that user
+            else:
+                raise HTTPException(
+                status_code=403,
+                detail="This log does not belong to user"
+                )
+
+
+    
+    raise HTTPException(
+        status_code=404,
+        detail=f"Log with ID {id} was not found"
+    )
+            

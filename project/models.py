@@ -10,6 +10,7 @@ from datetime import date
 
 # Base Model based on the JSON model of the data
 class TravelLogBase(BaseModel):
+    id: int
     username: str
     name: str
     destination: str
