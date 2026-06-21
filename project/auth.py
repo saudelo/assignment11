@@ -28,8 +28,6 @@ def get_current_user(credentials: HTTPBasicCredentials = Depends(security)) -> s
         stored_password.encode("utf-8")
         )
         if password_correct:
-            print("USERNAME:", credentials.username)
-            print("PASSWORD:", credentials.password)
             return credentials.username
         else:
             raise HTTPException(
