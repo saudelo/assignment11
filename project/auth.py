@@ -9,6 +9,14 @@ from storage import read_login_info
 security = HTTPBasic()
 
 def get_current_user(credentials: HTTPBasicCredentials = Depends(security)) -> str:
+    print("AUTH FUNCTION CALLED")
+    if not credentials.username or not credentials.password:
+        raise HTTPException(
+            status_code=401,
+            detail="Missing credentials",
+            headers={"WWW-Authenticate": "Basic"}
+        )
+
     users_list =  read_login_info()
     this_user = next((u for u in users_list if u["username"] == credentials.username), None)
    
@@ -20,6 +28,8 @@ def get_current_user(credentials: HTTPBasicCredentials = Depends(security)) -> s
         stored_password.encode("utf-8")
         )
         if password_correct:
+            print("USERNAME:", credentials.username)
+            print("PASSWORD:", credentials.password)
             return credentials.username
         else:
             raise HTTPException(

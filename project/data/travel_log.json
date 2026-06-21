@@ -6,6 +6,56 @@
     "destination": "France",
     "start_date": "2026-03-20",
     "end_date": "2026-03-27",
-    "highlights": ["Went to Eiffel Tower"]
+    "highlights": [
+      "Went to Eiffel Tower"
+    ]
+  },
+  {
+    "id": 2,
+    "username": "samdoe",
+    "name": "Samantha Doe",
+    "destination": "Italy",
+    "start_date": "2026-03-20",
+    "end_date": "2026-03-27",
+    "highlights": [
+      "Saw some museums",
+      "Ate some pasta"
+    ]
+  },
+  {
+    "id": 3,
+    "username": "benny",
+    "name": "Benjamin Franklin",
+    "destination": "Spain",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-30",
+    "highlights": [
+      "Ate a Paella",
+      "Saw some friends",
+      "Went to the beach"
+    ]
+  },
+  {
+    "id": 4,
+    "username": "Joe",
+    "name": "Joe Doe",
+    "destination": "Egypt",
+    "start_date": "2026-03-20",
+    "end_date": "2026-03-27",
+    "highlights": [
+      "Saw the pyramids",
+      "Cruised the Nile"
+    ]
+  },
+  {
+    "id": 5,
+    "username": "Henry",
+    "name": "Henry Doe",
+    "destination": "Germany",
+    "start_date": "2026-02-21",
+    "end_date": "2026-02-28",
+    "highlights": [
+      "Saw museum"
+    ]
   }
 ]
