@@ -11,18 +11,6 @@
     ]
   },
   {
-    "id": 2,
-    "username": "samdoe",
-    "name": "Samantha Doe",
-    "destination": "Italy",
-    "start_date": "2026-03-20",
-    "end_date": "2026-03-27",
-    "highlights": [
-      "Saw some museums",
-      "Ate some pasta"
-    ]
-  },
-  {
     "id": 3,
     "username": "benny",
     "name": "Benjamin Franklin",

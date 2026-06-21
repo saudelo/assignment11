@@ -84,3 +84,30 @@ def get_id_travel_log(id: int, username:str):
         detail=f"Log with ID {id} was not found"
     )
             
+
+#Helper methods
+def get_id_travel_log_delete(id: int, username:str):
+    travel_log_data = read_travel_logs()
+
+    for travel_log in travel_log_data:
+        if travel_log.get("id") == id:
+
+            if travel_log.get("username") == username:
+                travel_id = travel_log.get("id")
+                travel_log_data.remove(travel_log)
+                write_data(TRAVEL_LOG_FILE, travel_log_data) #rewrite all data
+                return f"Travel log ID {travel_id} successfully removed for user {username}" 
+                #return a String with message
+            else:
+                raise HTTPException(
+                status_code=403,
+                detail=f"This log does not belong to {username}, so it cannot be deleted"
+                )
+
+
+    
+    raise HTTPException(
+        status_code=404,
+        detail=f"Travel Log with ID {id} was not found"
+    )
+            
