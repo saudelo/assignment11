@@ -38,7 +38,7 @@ def log_by_id(id:int):
     return travel_log
 
 #delete a log by id
-@router.get("/user/travel-logs/delete/{id}",response_model = DeleteResponse, tags=["DeleteLogByID"],  summary="Deletes a log by its unique ID" )
+@router.delete("/user/travel-logs/delete/{id}",response_model = DeleteResponse, tags=["DeleteLogByID"],  summary="Deletes a log by its unique ID" )
 def delete_log_by_id(id:int , username: str = Depends(get_current_user)):
     """Deletes a log with the specified ID. Uses auth to verify the log belongs to the user. Returns a success message with the ID of the deleted log and the username."""
     response = get_id_travel_log_delete(id,username)
@@ -48,10 +48,11 @@ def delete_log_by_id(id:int , username: str = Depends(get_current_user)):
 async def get_status():
     return {"status": "running", "version": "1.0.0"}
 
-@router.post("/travel-logs", response_model=TravelLogResponse, tags=["Travel Logs"], summary="Posts a travel log based on user logged in")
+@router.post("/travel-logs", response_model=TravelLogResponse, tags=["Travel Logs"], 
+             summary="Posts a travel log based on user logged in",
+             description="Posts a travel log based on account logged in and uses the username along with the entered entries of name, destination, start date, end date, and highlights. ID and created at are both generated." )
 def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_current_user)):
     logs = read_travel_logs()
-
     next_id = 1 if not logs else max(log["id"] for log in logs) + 1
 
     created_at = datetime.now(UTC)

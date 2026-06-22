@@ -157,5 +157,65 @@
       "string"
     ],
     "created_at": "2026-06-22T17:06:36.980143+00:00"
+  },
+  {
+    "id": 15,
+    "username": "samdoe",
+    "name": "string",
+    "destination": "string",
+    "start_date": "2026-06-22",
+    "end_date": "2026-06-22",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22T17:22:51.665330+00:00"
+  },
+  {
+    "id": 16,
+    "username": "samdoe",
+    "name": "string",
+    "destination": "string",
+    "start_date": "2026-06-22",
+    "end_date": "2026-06-22",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22T17:22:52.810638+00:00"
+  },
+  {
+    "id": 17,
+    "username": "samdoe",
+    "name": "bob",
+    "destination": "string",
+    "start_date": "2026-06-22",
+    "end_date": "2026-06-22",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22T17:23:10.001210+00:00"
+  },
+  {
+    "id": 18,
+    "username": "samdoe",
+    "name": "nameeeee",
+    "destination": "string",
+    "start_date": "2026-06-22",
+    "end_date": "2026-06-22",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22T17:30:29.526684+00:00"
+  },
+  {
+    "id": 19,
+    "username": "samdoe",
+    "name": "string",
+    "destination": "string",
+    "start_date": "2026-06-22",
+    "end_date": "2026-06-22",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22T17:32:04.520104+00:00"
   }
 ]

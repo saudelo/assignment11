@@ -97,7 +97,7 @@ def get_id_travel_log(id: int):
         status_code=404,
         detail=f"Log with ID {id} was not found"
         )  
-    
+
  
 
 
