@@ -17,30 +17,30 @@ security = HTTPBasic()
 
 router = APIRouter()
 
+
 #for authenticating user
-@router.get("/user-auth/", tags=["Auth"], summary = "This is a test endpoint.")
+@router.get("/user-auth/", tags=["Auth"], summary = "This is a test endpoint.", description = "This is a test endpoint. Requires authentication. Returns a string with the username and authentication status.")
 def get_user(username: str = Depends(get_current_user)):
-    """This is a test endpoint. Requires authentication. Returns a string with the username and authentication status."""
     return f"status: authenticated, username: {username}"
 
 #get all user logs
-@router.get("/all-travel-logs/", response_model = list[TravelLogBase], status_code=200, tags=["GetAllLogs"],  summary="Get all logs.")
+@router.get("/all-travel-logs/", response_model = list[TravelLogBase], status_code=200, tags=["GetAllLogs"],  summary="Get all logs.", description = "Get all logs. Intentionally public. Returns a list of Travel logs")
 def get_all_logs():
-    """Get all logs. Intentionally public. Returns a list of Travel logs"""
     travel_logs = read_travel_logs()
     return travel_logs
 
 #get a log by id
-@router.get("/user/travel-logs/{id}", response_model = TravelLogBase, tags=["LogByID"], summary="Gets a log by its ID, but only if it belongs to the logged in user" )
+@router.get("/user/travel-logs/{id}", response_model = TravelLogBase, 
+            tags=["LogByID"], summary="Gets a log by its ID, but only if it belongs to the logged in user",
+              description= "Get log by ID. Intentionally public. Returns the log with the specified id.")
 def log_by_id(id:int):
-    """Get log by id. Intentionally public. Returns the log with the specified id."""
     travel_log = get_id_travel_log(id)
     return travel_log
 
 #delete a log by id
-@router.get("/user/travel-logs/delete/{id}",response_model = DeleteResponse, tags=["DeleteLogByID"],  summary="Deletes a log by its unique ID" )
+@router.delete("/user/travel-logs/delete/{id}",response_model = DeleteResponse, tags=["DeleteLogByID"],  summary="Deletes a log by its unique ID" , description =  "Deletes a log with the specified ID. Uses auth to verify the log belongs to the user. Returns a success message with the ID of the deleted log and the username.")
+
 def delete_log_by_id(id:int , username: str = Depends(get_current_user)):
-    """Deletes a log with the specified ID. Uses auth to verify the log belongs to the user. Returns a success message with the ID of the deleted log and the username."""
     response = get_id_travel_log_delete(id,username)
     return response
 
