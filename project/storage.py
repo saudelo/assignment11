@@ -89,18 +89,15 @@ def get_id_travel_log(id: int):
     travel_log_data = read_travel_logs()
 
     for travel_log in travel_log_data:
-
         if travel_log.get("id") == id:
             return travel_log #return the specific log for that user
 
-        raise HTTPException(
-        status_code=404,
-        detail=f"Log with ID {id} was not found"
-        )  
+    raise HTTPException(
+    status_code=404,
+    detail=f"Log with ID {id} was not found"
+)  
     
  
-
-
 #Helper methods
 def get_id_travel_log_delete(id: int, username:str):
     travel_log_data = read_travel_logs()
