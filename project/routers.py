@@ -73,7 +73,8 @@ def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_c
 
     return new_log
 
-@router.post("/user", summary="Adds a new account with username and password")
+@router.post("/user", summary="Adds a new account with username and password",
+             description="Adds a new user to the database with username and password")
 def create_user_info(user: LoginInfo):
     users = read_login_info()
 
