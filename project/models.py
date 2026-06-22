@@ -6,17 +6,16 @@
 
 from pydantic import BaseModel
 from typing import Optional
-from datetime import date
+from datetime import date, datetime
 
 # Base Model based on the JSON model of the data
 class TravelLogBase(BaseModel):
-    id: int
-    username: str
     name: str
     destination: str
     start_date: date
     end_date: date
     highlights: list[str]
+    created_at: date
 
 # (POST) Usees the above model^ as the base to create new entry
 class TravelLogCreate(TravelLogBase):
@@ -34,7 +33,10 @@ class TravelLogUpdate(BaseModel):
 # (GET) Outgoing data
 class TravelLogResponse(TravelLogBase):
     id: int #added on id for the travel log
+    username: str
+    created_at: str
 
+    
 # Login model
 class LoginInfo(BaseModel):
     username: str
