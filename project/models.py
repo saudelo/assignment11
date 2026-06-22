@@ -52,6 +52,3 @@ class LoginInfo(BaseModel):
 class DeleteResponse(TravelLogBase):
     username: str
     message: str
-class ErrorResponse(BaseModel):
-    status_code: int
-    details: str

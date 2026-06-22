@@ -24,13 +24,17 @@ def get_user(username: str = Depends(get_current_user)):
     return f"status: authenticated, username: {username}"
 
 #get all user logs
-@router.get("/all-travel-logs/", response_model = list[TravelLogBase], status_code=200, tags=["GetAllLogs"],  summary="Get all logs.", description = "Get all logs. Intentionally public. Returns a list of Travel logs")
+@router.get("/all-travel-logs/", response_model = list[TravelLogBase], responses = {200: {"OK - All logs displayed"}}, tags=["GetAllLogs"],  summary="Get all logs.", description = "Get all logs. Intentionally public. Returns a list of Travel logs")
 def get_all_logs():
     travel_logs = read_travel_logs()
     return travel_logs
 
 #get a log by id
-@router.get("/user/travel-logs/{id}", response_model = TravelLogBase, 
+@router.get("/user/travel-logs/{id}", response_model = TravelLogBase,
+            responses = {
+                404:{"NotFound-A log with the specified ID could not be found"},
+                200:{"OK - ID successfully found and log is displayed"}
+            }, 
             tags=["LogByID"], summary="Gets a log by its ID, but only if it belongs to the logged in user",
               description= "Get log by ID. Intentionally public. Returns the log with the specified id.")
 def log_by_id(id:int):
@@ -38,7 +42,13 @@ def log_by_id(id:int):
     return travel_log
 
 #delete a log by id
-@router.delete("/user/travel-logs/delete/{id}",response_model = DeleteResponse, tags=["DeleteLogByID"],  summary="Deletes a log by its unique ID" , description =  "Deletes a log with the specified ID. Uses auth to verify the log belongs to the user. Returns a success message with the ID of the deleted log and the username.")
+@router.delete("/user/travel-logs/delete/{id}",response_model = DeleteResponse,
+               responses= { 404:{"NotFound-A log with the specified ID could not be found"},
+               403:{"Forbidden - User is not authorized to delete this log"},
+               401:{"Unauthorized - User login error"},
+               200:{"OK - ID successfully found, user authorized, and log deleted"}},
+               tags=["DeleteLogByID"],  summary="Deletes a log by its unique ID" , description =  "Deletes a log with the specified ID. Uses auth to verify the log belongs to the user intending to delete it."
+               " Returns a success message with the ID of the deleted log and the username if the log is found and belongs to that user. Otherwise it returns an error.")
 def delete_log_by_id(id:int , username: str = Depends(get_current_user)):
     response = get_id_travel_log_delete(id,username)
     return response

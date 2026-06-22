@@ -10,7 +10,7 @@
 
 import json
 import os
-from fastapi import HTTPException
+from fastapi import HTTPException, status
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TRAVEL_LOG_FILE = os.path.join(BASE_DIR, "data", "travel_log.json")
@@ -92,11 +92,10 @@ def get_id_travel_log(id: int):
         if travel_log.get("id") == id:
             return travel_log #return the specific log for that user
 
-
-        raise HTTPException(
-        status_code=404,
-        detail=f"Log with ID {id} was not found"
-        )  
+    raise HTTPException(
+    status_code=status.HTTP_404_NOT_FOUND,
+    detail=f"Log with ID {id} was not found"
+    )  
 
  
 #Helper methods
@@ -115,14 +114,14 @@ def get_id_travel_log_delete(id: int, username:str):
                     
             else:
                 raise HTTPException(
-                status_code=403,
+                status_code=status.HTTP_403_FORBIDDEN,
                 detail=f"This log does not belong to {username}, so it cannot be deleted"
                 )
 
 
     
     raise HTTPException(
-        status_code=404,
+        status_code=status.HTTP_404_NOT_FOUND,
         detail=f"Travel Log with ID {id} was not found"
     )
             

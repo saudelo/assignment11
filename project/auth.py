@@ -12,7 +12,7 @@ def get_current_user(credentials: HTTPBasicCredentials = Depends(security)) -> s
     print("AUTH FUNCTION CALLED")
     if not credentials.username or not credentials.password:
         raise HTTPException(
-            status_code=401,
+            status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Missing credentials",
             headers={"WWW-Authenticate": "Basic"}
         )
