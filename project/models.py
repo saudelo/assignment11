@@ -10,6 +10,8 @@ from datetime import date, datetime
 
 # Base Model based on the JSON model of the data
 class TravelLogBase(BaseModel):
+    id: int
+    username: str
     name: str
     destination: str
     start_date: date
@@ -19,7 +21,12 @@ class TravelLogBase(BaseModel):
 
 # (POST) Usees the above model^ as the base to create new entry
 class TravelLogCreate(TravelLogBase):
-    pass
+    name: str
+    destination: str
+    start_date: date
+    end_date: date
+    highlights: list[str]
+    created_at: date
 
 # (PATCH) Partial updates and makes every attribute optional to fill
 class TravelLogUpdate(BaseModel):
