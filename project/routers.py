@@ -17,24 +17,26 @@ security = HTTPBasic()
 router = APIRouter()
 
 #for authenticating user
-@router.get("/user-auth/", tags=["Auth"])
+@router.get("/user-auth/", tags=["Auth"], summary = "This is a test endpoint.")
 def get_user(username: str = Depends(get_current_user)):
+    """This is a test endpoint. Requires authentication. Returns a string with the username and authentication status."""
     return f"status: authenticated, username: {username}"
 
 #get all user logs
-@router.get("/all-travel-logs/", response_model = list[TravelLogBase], status_code=200, tags=["Users"] )
+@router.get("/all-travel-logs/", response_model = list[TravelLogBase], status_code=200, tags=["Users"],  summary="Get all logs.")
 def get_all_logs():
+    """Get all logs. Intentionally public."""
     travel_logs = read_travel_logs()
     return travel_logs
 
 #get a log by id
-@router.get("/user/travel-logs/{id}", response_model = TravelLogBase, tags=["LogByID"] )
+@router.get("/user/travel-logs/{id}", response_model = TravelLogBase, tags=["LogByID"], summary="Gets a log by its ID, but only if it belongs to the logged in user" )
 def log_by_id(id:int , username: str = Depends(get_current_user)):
     travel_log = get_id_travel_log(id,username)
     return travel_log
 
 #delete a log by id
-@router.get("/user/travel-logs/delete/{id}", tags=["DeleteLogByID"] )
+@router.get("/user/travel-logs/delete/{id}", tags=["DeleteLogByID"],  summary="Deletes a log by its unique ID" )
 def delete_log_by_id(id:int , username: str = Depends(get_current_user)):
     message = get_id_travel_log_delete(id,username)
     return message
