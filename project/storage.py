@@ -63,7 +63,7 @@ def get_username_travel_log(username: str):
             return user  #return the whole dictionary for that user
     return None
 
-def get_id_travel_log(id: int, username:str):
+""" def get_id_travel_log(id: int, username:str):
     travel_log_data = read_travel_logs()
 
     for travel_log in travel_log_data:
@@ -83,7 +83,23 @@ def get_id_travel_log(id: int, username:str):
         status_code=404,
         detail=f"Log with ID {id} was not found"
     )
-            
+     """      
+
+def get_id_travel_log(id: int):
+    travel_log_data = read_travel_logs()
+
+    for travel_log in travel_log_data:
+
+        if travel_log.get("id") == id:
+            return travel_log #return the specific log for that user
+
+        raise HTTPException(
+        status_code=404,
+        detail=f"Log with ID {id} was not found"
+        )  
+    
+ 
+
 
 #Helper methods
 def get_id_travel_log_delete(id: int, username:str):
@@ -96,8 +112,9 @@ def get_id_travel_log_delete(id: int, username:str):
                 travel_id = travel_log.get("id")
                 travel_log_data.remove(travel_log)
                 write_data(TRAVEL_LOG_FILE, travel_log_data) #rewrite all data
-                return f"Travel log ID {travel_id} successfully removed for user {username}" 
-                #return a String with message
+                return {"username": username,
+                        "message": f"Travel log ID {travel_id} successfully removed for user {username}"}
+                    
             else:
                 raise HTTPException(
                 status_code=403,
