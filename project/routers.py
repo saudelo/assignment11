@@ -27,7 +27,7 @@ def get_all_logs():
 async def get_status():
     return {"status": "running", "version": "1.0.0"}
 
-@router.post("/travel-logs", tags=["Auth"])
+@router.post("/travel-logs", response_model=TravelLogResponse, tags=["Travel Logs"])
 def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_current_user)):
     logs = read_travel_logs()
 
@@ -35,7 +35,7 @@ def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_c
 
     new_log = {
         "id": next_id,
-        "username": travel_log.username,
+        "username": username,
         "name": travel_log.name,
         "destination": travel_log.destination,
         "start_date": str(travel_log.start_date),

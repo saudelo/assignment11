@@ -10,7 +10,6 @@ from datetime import date
 
 # Base Model based on the JSON model of the data
 class TravelLogBase(BaseModel):
-    username: str
     name: str
     destination: str
     start_date: date
@@ -33,7 +32,8 @@ class TravelLogUpdate(BaseModel):
 # (GET) Outgoing data
 class TravelLogResponse(TravelLogBase):
     id: int #added on id for the travel log
-
+    username: str
+    
 # Login model
 class LoginInfo(BaseModel):
     username: str
