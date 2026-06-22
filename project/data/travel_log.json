@@ -11,91 +11,39 @@
     ]
   },
   {
-    "id": 2,
-    "username": "Joe",
-    "name": "string",
-    "destination": "string",
-    "start_date": "2026-06-19",
-    "end_date": "2026-06-19",
-    "highlights": [
-      "string"
-    ]
-  },
-  {
     "id": 3,
-    "username": "Joe",
-    "name": "string",
-    "destination": "string",
-    "start_date": "2026-06-19",
-    "end_date": "2026-06-19",
+    "username": "benny",
+    "name": "Benjamin Franklin",
+    "destination": "Spain",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-30",
     "highlights": [
-      "string"
+      "Ate a Paella",
+      "Saw some friends",
+      "Went to the beach"
     ]
   },
   {
     "id": 4,
     "username": "Joe",
     "name": "Joe Doe",
-    "destination": "New",
-    "start_date": "2026-06-19",
-    "end_date": "2026-06-19",
+    "destination": "Egypt",
+    "start_date": "2026-03-20",
+    "end_date": "2026-03-27",
     "highlights": [
-      "HI"
+      "Saw the pyramids",
+      "Cruised the Nile"
     ]
   },
   {
     "id": 5,
-    "username": "Joe",
-    "name": "Joe Doe",
-    "destination": "New",
-    "start_date": "2026-06-19",
-    "end_date": "2026-06-19",
+    "username": "Henry",
+    "name": "Henry Doe",
+    "destination": "Germany",
+    "start_date": "2026-02-21",
+    "end_date": "2026-02-28",
     "highlights": [
-      "HI"
-    ]
-  },
-  {
-    "id": 6,
-    "username": "Joe",
-    "name": "string",
-    "destination": "string",
-    "start_date": "2026-06-19",
-    "end_date": "2026-06-19",
-    "highlights": [
-      "string"
-    ]
-  },
-  {
-    "id": 7,
-    "username": "Joe",
-    "name": "jay",
-    "destination": "string",
-    "start_date": "2026-06-19",
-    "end_date": "2026-06-19",
-    "highlights": [
-      "string"
-    ]
-  },
-  {
-    "id": 8,
-    "username": "Jay",
-    "name": "jay",
-    "destination": "string",
-    "start_date": "2026-06-19",
-    "end_date": "2026-06-19",
-    "highlights": [
-      "string"
-    ]
-  },
-  {
-    "id": 9,
-    "username": "Jay",
-    "name": "JAY",
-    "destination": "string",
-    "start_date": "2026-06-19",
-    "end_date": "2026-06-19",
-    "highlights": [
-      "string"
+      "Saw museum"
     ]
   }
 ]

@@ -4,11 +4,15 @@
 #Update (REQUIRED)	At least one PUT or PATCH endpoint that modifies an existing record
 #Delete (REQUIRED)	At least one DELETE endpoint that removes a record by ID
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends,HTTPException
 from auth import get_current_user
-from storage import LOGIN_FILE, TRAVEL_LOG_FILE, read_travel_logs, write_data, read_login_info
+from storage import LOGIN_FILE, TRAVEL_LOG_FILE, read_travel_logs, write_data, read_login_info,get_id_travel_log,get_id_travel_log_delete
 from models import TravelLogCreate, TravelLogResponse, TravelLogBase, LoginInfo
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
+
+
+security = HTTPBasic()
 
 router = APIRouter()
 
@@ -22,6 +26,18 @@ def get_user(username: str = Depends(get_current_user)):
 def get_all_logs():
     travel_logs = read_travel_logs()
     return travel_logs
+
+#get a log by id
+@router.get("/user/travel-logs/{id}", response_model = TravelLogBase, tags=["LogByID"] )
+def log_by_id(id:int , username: str = Depends(get_current_user)):
+    travel_log = get_id_travel_log(id,username)
+    return travel_log
+
+#delete a log by id
+@router.get("/user/travel-logs/delete/{id}", tags=["DeleteLogByID"] )
+def delete_log_by_id(id:int , username: str = Depends(get_current_user)):
+    message = get_id_travel_log_delete(id,username)
+    return message
 
 @router.get("/status")
 async def get_status():
@@ -62,6 +78,12 @@ def create_user_info(user: LoginInfo):
 
     return new_user
 
+<<<<<<< HEAD
 @router.patch("/travel-log/{id}")
 def patch_travel_log():
     return
+=======
+
+
+
+>>>>>>> main
