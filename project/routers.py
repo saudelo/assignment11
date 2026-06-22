@@ -9,6 +9,7 @@ from auth import get_current_user
 from storage import LOGIN_FILE, TRAVEL_LOG_FILE, read_travel_logs, write_data, read_login_info,get_id_travel_log,get_id_travel_log_delete
 from models import TravelLogCreate, TravelLogResponse, TravelLogBase, LoginInfo
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
+from datetime import datetime, UTC
 
 
 
@@ -49,6 +50,8 @@ def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_c
 
     next_id = 1 if not logs else max(log["id"] for log in logs) + 1
 
+    created_at = datetime.now(UTC).strftime("%Y-%m-%d at %I:%M %p UTC")
+
     new_log = {
         "id": next_id,
         "username": username,
@@ -56,7 +59,8 @@ def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_c
         "destination": travel_log.destination,
         "start_date": str(travel_log.start_date),
         "end_date": str(travel_log.end_date),
-        "highlights": travel_log.highlights
+        "highlights": travel_log.highlights,
+        "created_at": created_at
     }
 
     logs.append(new_log)
@@ -78,12 +82,7 @@ def create_user_info(user: LoginInfo):
 
     return new_user
 
-<<<<<<< HEAD
 @router.patch("/travel-log/{id}")
 def patch_travel_log():
     return
-=======
 
-
-
->>>>>>> main

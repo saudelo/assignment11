@@ -8,7 +8,8 @@
     "end_date": "2026-03-27",
     "highlights": [
       "Went to Eiffel Tower"
-    ]
+    ],
+    "created_at": "2026-06-22 at 09:34 AM UTC"
   },
   {
     "id": 3,
@@ -21,7 +22,8 @@
       "Ate a Paella",
       "Saw some friends",
       "Went to the beach"
-    ]
+    ],
+    "created_at": "2026-06-22 at 09:34 AM UTC"
   },
   {
     "id": 4,
@@ -33,7 +35,8 @@
     "highlights": [
       "Saw the pyramids",
       "Cruised the Nile"
-    ]
+    ],
+    "created_at": "2026-06-22 at 09:34 AM UTC"
   },
   {
     "id": 5,
@@ -44,6 +47,91 @@
     "end_date": "2026-02-28",
     "highlights": [
       "Saw museum"
-    ]
+    ],
+    "created_at": "2026-06-22 at 09:34 AM UTC"
+  },
+  {
+    "id": 6,
+    "username": "Henry",
+    "name": "string",
+    "destination": "string",
+    "start_date": "2026-06-22",
+    "end_date": "2026-06-22",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22 at 09:34 AM UTC"
+  },
+  {
+    "id": 7,
+    "username": "Henry",
+    "name": "Hnrey",
+    "destination": "azabaijohn",
+    "start_date": "2026-06-30",
+    "end_date": "2026-07-20",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22 at 09:34 AM UTC"
+  },
+  {
+    "id": 8,
+    "username": "Henry",
+    "name": "Hnrey",
+    "destination": "azabaijohn",
+    "start_date": "2026-06-30",
+    "end_date": "2026-07-20",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22 at 09:34 AM UTC"
+  },
+  {
+    "id": 9,
+    "username": "Henry",
+    "name": "Hnrey",
+    "destination": "azabaijohn",
+    "start_date": "2026-06-30",
+    "end_date": "2026-07-20",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22 at 09:34 AM UTC"
+  },
+  {
+    "id": 10,
+    "username": "Henry",
+    "name": "Hnrey",
+    "destination": "azabaijohn",
+    "start_date": "2026-06-30",
+    "end_date": "2026-07-20",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22 at 04:37 PM UTC"
+  },
+  {
+    "id": 11,
+    "username": "Henry",
+    "name": "Hnrey",
+    "destination": "azabaijohn",
+    "start_date": "2026-06-30",
+    "end_date": "2026-07-20",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22 at 04:37 PM UTC"
+  },
+  {
+    "id": 12,
+    "username": "Henry",
+    "name": "Hnrey",
+    "destination": "azabaijohn",
+    "start_date": "2026-06-30",
+    "end_date": "2026-07-20",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-22 at 04:38 PM UTC"
   }
 ]
