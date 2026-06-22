@@ -48,3 +48,7 @@ class TravelLogResponse(TravelLogBase):
 class LoginInfo(BaseModel):
     username: str
     password: str
+
+class DeleteResponse(TravelLogBase):
+    username: str
+    message: str
