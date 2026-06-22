@@ -46,13 +46,13 @@ def delete_log_by_id(id:int , username: str = Depends(get_current_user)):
 async def get_status():
     return {"status": "running", "version": "1.0.0"}
 
-@router.post("/travel-logs", response_model=TravelLogResponse, tags=["Travel Logs"])
+@router.post("/travel-logs", response_model=TravelLogResponse, tags=["Travel Logs"], summary="Posts a travel log based on user logged in")
 def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_current_user)):
     logs = read_travel_logs()
 
     next_id = 1 if not logs else max(log["id"] for log in logs) + 1
 
-    created_at = datetime.now(UTC).strftime("%Y-%m-%d at %I:%M %p UTC")
+    created_at = datetime.now(UTC)
 
     new_log = {
         "id": next_id,
@@ -62,7 +62,7 @@ def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_c
         "start_date": str(travel_log.start_date),
         "end_date": str(travel_log.end_date),
         "highlights": travel_log.highlights,
-        "created_at": created_at
+        "created_at": created_at.isoformat()
     }
 
     logs.append(new_log)
@@ -70,7 +70,7 @@ def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_c
 
     return new_log
 
-@router.post("/user")
+@router.post("/user", summary="Adds a new account with username and password")
 def create_user_info(user: LoginInfo):
     users = read_login_info()
 

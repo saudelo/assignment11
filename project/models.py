@@ -17,7 +17,8 @@ class TravelLogBase(BaseModel):
     start_date: date
     end_date: date
     highlights: list[str]
-    created_at: date
+    created_at: datetime
+
 
 # (POST) Usees the above model^ as the base to create new entry
 class TravelLogCreate(TravelLogBase):
@@ -26,7 +27,6 @@ class TravelLogCreate(TravelLogBase):
     start_date: date
     end_date: date
     highlights: list[str]
-    created_at: date
 
 # (PATCH) Partial updates and makes every attribute optional to fill
 class TravelLogUpdate(BaseModel):
@@ -41,7 +41,7 @@ class TravelLogUpdate(BaseModel):
 class TravelLogResponse(TravelLogBase):
     id: int #added on id for the travel log
     username: str
-    created_at: str
+    created_at: datetime
 
     
 # Login model
