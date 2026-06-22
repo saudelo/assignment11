@@ -21,7 +21,7 @@ class TravelLogBase(BaseModel):
 
 
 # (POST) Usees the above model^ as the base to create new entry
-class TravelLogCreate(TravelLogBase):
+class TravelLogCreate(BaseModel):
     name: str
     destination: str
     start_date: date
