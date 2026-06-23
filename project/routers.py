@@ -101,7 +101,7 @@ async def get_status():
     response_model=TravelLogResponse,
     tags=["Travel Logs"],
     summary="Posts a travel log based on user logged in",
-    description="Posts a travel log based on account logged in and uses the username along with the entered entries of name, destination, start date, end date, and highlights. ID and createdat are both generated.",
+    description="Posts a travel log based on account logged in and uses the username along with the entered entries of name, destination, start date, end date, and highlights. ID and created_at are both generated.",
     responses={
         201: {"description": "Travel log created successfully"},
         401: {"description": "Unauthorized - invalid or missing credentials"},
@@ -119,10 +119,10 @@ def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_c
         "username": username,
         "name": travel_log.name,
         "destination": travel_log.destination,
-        "start_date": travel_log.start_date,
-        "end_date": travel_log.end_date,
+        "start_date": str(travel_log.start_date),
+        "end_date": str(travel_log.end_date),
         "highlights": travel_log.highlights,
-        "createdat": created_at
+        "created_at": created_at.isoformat()
     }
 
     logs.append(new_log)
