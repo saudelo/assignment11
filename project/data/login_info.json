@@ -4,7 +4,6 @@
     "password": "password123"
   },
   {
-
     "username": "samdoe",
     "password": "234"
   },
@@ -15,5 +14,9 @@
   {
     "username": "Henry",
     "password": "pass234"
+  },
+  {
+    "username": "James",
+    "password": "123"
   }
 ]

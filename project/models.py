@@ -30,7 +30,6 @@ class TravelLogCreate(BaseModel):
 
 # (PATCH) Partial updates and makes every attribute optional to fill
 class TravelLogUpdate(BaseModel):
-    username: Optional[str] = None
     name: Optional[str] = None
     destination: Optional[str] = None
     start_date: Optional[date] = None
