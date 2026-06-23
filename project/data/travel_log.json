@@ -12,20 +12,6 @@
     "created_at": "2026-06-22T16:22:00+00:00"
   },
   {
-    "id": 3,
-    "username": "benny",
-    "name": "Benjamin Franklin",
-    "destination": "Spain",
-    "start_date": "2025-08-10",
-    "end_date": "2025-08-30",
-    "highlights": [
-      "Ate a Paella",
-      "Saw some friends",
-      "Went to the beach"
-    ],
-    "created_at": "2026-06-22T16:22:00+00:00"
-  },
-  {
     "id": 4,
     "username": "Joe",
     "name": "Joe Doe",
@@ -51,31 +37,7 @@
     "created_at": "2026-06-22T16:22:00+00:00"
   },
   {
-    "id": 6,
-    "username": "Henry",
-    "name": "string",
-    "destination": "string",
-    "start_date": "2026-06-22",
-    "end_date": "2026-06-22",
-    "highlights": [
-      "string"
-    ],
-    "created_at": "2026-06-22T16:22:00+00:00"
-  },
-  {
     "id": 7,
-    "username": "Henry",
-    "name": "Hnrey",
-    "destination": "azabaijohn",
-    "start_date": "2026-06-30",
-    "end_date": "2026-07-20",
-    "highlights": [
-      "string"
-    ],
-    "created_at": "2026-06-22T16:22:00+00:00"
-  },
-  {
-    "id": 8,
     "username": "Henry",
     "name": "Hnrey",
     "destination": "azabaijohn",

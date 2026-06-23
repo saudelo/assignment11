@@ -119,8 +119,8 @@ def create_travel_log(travel_log: TravelLogCreate, username: str = Depends(get_c
         "username": username,
         "name": travel_log.name,
         "destination": travel_log.destination,
-        "startdate": travel_log.startdate,
-        "enddate": travel_log.enddate,
+        "start_date": travel_log.start_date,
+        "end_date": travel_log.end_date,
         "highlights": travel_log.highlights,
         "createdat": created_at
     }

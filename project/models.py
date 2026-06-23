@@ -48,6 +48,6 @@ class LoginInfo(BaseModel):
     username: str
     password: str
 
-class DeleteResponse(TravelLogBase):
+class DeleteResponse(BaseModel):
     username: str
     message: str
