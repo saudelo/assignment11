@@ -241,5 +241,17 @@
       "string"
     ],
     "created_at": "2026-06-22T17:58:38.237674+00:00"
+  },
+  {
+    "id": 22,
+    "username": "Joe",
+    "name": "JOEEEE",
+    "destination": "string",
+    "start_date": "2026-06-23",
+    "end_date": "2026-06-23",
+    "highlights": [
+      "string"
+    ],
+    "created_at": "2026-06-23T05:37:47.558259+00:00"
   }
 ]

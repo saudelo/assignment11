@@ -25,7 +25,7 @@ def read_data(filepath):
 
 def write_data(filepath, data):
     with open(filepath, "w", encoding="utf-8") as file:
-        json.dump(data, file, indent=2)
+        json.dump(data, file, indent=2, default=str)
 
 def read_travel_logs():
     data = read_data(TRAVEL_LOG_FILE)
